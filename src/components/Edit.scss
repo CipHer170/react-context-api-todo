@@ -1,0 +1,25 @@
+.todo__edit {
+  position: relative;
+  top: 35%;
+  left: 35%;
+  min-width: 500px;
+  min-height: 200px;
+  border-radius: 50px;
+  border: rgb(22, 96, 234);
+}
+.todo__edit__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.todo__edit__form label,
+input {
+  margin-bottom: 20px;
+}
+.todo__edit__form input {
+  border-radius: 50px;
+  border: 0.1px solid black;
+  padding: 5px 10px;
+  cursor: pointer;
+}

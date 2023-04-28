@@ -1,0 +1,24 @@
+GET  http://localhost:3000/todos HTTP/1.1
+Content-Type: application/json
+
+###
+
+POST http://localhost:3000/todos HTTP/1.1
+Content-Type: application/json
+
+
+{
+    "title":"Hermione Granger"
+}
+
+###
+PUT http://localhost:3000/todos/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "title":"Dark Tower"
+}
+
+###
+DELETE http://localhost:3000/todos/2 HTTP/1.1
+Content-Type: application/json 
