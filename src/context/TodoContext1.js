@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import axios from "axios";
 
 const TodoContext = createContext();
+
 function Provider({ children }) {
   const [items, setItems] = useState([]);
 
@@ -15,7 +16,8 @@ function Provider({ children }) {
         },
       }
     );
-    setItems(dataFormatter(response?.data));
+
+    setItems(formatted(response?.data));
   };
 
   // posting data
@@ -26,11 +28,12 @@ function Provider({ children }) {
           "https://plu-v1-default-rtdb.firebaseio.com/todos.json",
           { title: item, id: Date.now() }
         );
+
         const newTodo = { title: item, id: res?.data?.name || "" };
-        const updatedItems = [newTodo, ...items];
+        const updatedItems = [...items, newTodo];
         setItems(updatedItems);
       } catch (error) {
-        alert(error);
+        alert("oops");
       }
     }
   };
@@ -74,16 +77,25 @@ function Provider({ children }) {
     DeleteItemById,
     edittingElementsById,
   };
+
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>;
 }
 export { TodoContext };
 export default Provider;
 
-export function dataFormatter(data = []) {
-  const objectToArray = Object.entries(data);
-  const newData = objectToArray.map((item) => ({
-    ...item[1],
-    id: item[0],
-  }));
+// FORMATTED === DATAFORMATTER
+
+// export function dataFormatter(data = []) {
+//   const objectToArray = Object.entries(data);
+//   const newData = objectToArray.map((item) => ({ ...item[1], id: item[0] }));
+//   return newData;
+// }
+
+export const formatted = (data = []) => {
+  const newData = [];
+  for (let key in data) {
+    const data1 = { id: key, title: data[key].title };
+    newData.push(data1);
+  }
   return newData;
-}
+};

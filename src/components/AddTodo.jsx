@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import { TodoContext } from "../context/TodoContext";
+import React, { useState } from "react";
+import { useTodoContext } from "../hooks/useTodoContext";
 
 function AddTodo() {
   const [item, setItem] = useState("");
-  const { createItem } = useContext(TodoContext);
+  const { createItem } = useTodoContext();
   const handleCreateChange = (e) => {
     setItem(e.target.value);
   };
@@ -16,7 +16,12 @@ function AddTodo() {
     <div className="todo__newItem">
       <form action="" onSubmit={handleCreateSubmit}>
         <label htmlFor="">Enter item title</label>
-        <input type="text" value={item} onChange={handleCreateChange} />
+        <input
+          type="text"
+          autoFocus
+          value={item}
+          onChange={handleCreateChange}
+        />
       </form>
     </div>
   );

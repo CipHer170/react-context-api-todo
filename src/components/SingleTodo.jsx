@@ -1,20 +1,20 @@
-import React, { useContext, useState } from "react";
-// import EdittingTodo from "./EdittingTodo";
+import React, { useState } from "react";
 import ShowModal from "./ShowModal";
-import { TodoContext } from "../context/TodoContext";
 import EdittingTodo from "./EdittingTodo";
+import { useTodoContext } from "../hooks/useTodoContext";
 
 function SingleTodo({ item }) {
   const [showEditingItem, setShowEditingItem] = useState(false);
   const [showMore, setShowMore] = useState(false);
 
-  const { DeleteItemById } = useContext(TodoContext);
+  const { DeleteItemById } = useTodoContext();
   let content = <h3>{item.title}</h3>;
 
   // handle delete click
   const handleDeleteClick = () => {
     DeleteItemById(item.id);
   };
+
   // handle edit click
   const handleEditClick = () => {
     setShowEditingItem(!showEditingItem);
@@ -50,7 +50,7 @@ function SingleTodo({ item }) {
   // base jsx
   return (
     <div className="todo__single">
-      {item.title.slice(0, showMore ? 5 : 20)}
+      {item?.title?.slice(0, showMore ? 5 : 20)}
       <button onClick={handleShowMore} className="todo__single__btn_showMore">
         {showMore ? "show less " : "show  more"}
       </button>

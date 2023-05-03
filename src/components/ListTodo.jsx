@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import SingleTodo from "./SingleTodo";
-import { TodoContext } from "../context/TodoContext";
+import { useTodoContext } from "../hooks/useTodoContext";
 
 function ListTodo() {
-  const { items } = useContext(TodoContext);
+  const { items } = useTodoContext();
+
   const showList = items.map((item, i) => {
-    console.log("list" + item);
     return <SingleTodo item={item} key={i} />;
   });
+
   return <div className="todo__list">{showList}</div>;
 }
 
