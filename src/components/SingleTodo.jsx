@@ -26,7 +26,6 @@ function SingleTodo({ item }) {
       <EdittingTodo
         item={item}
         content={content}
-        showEditingItem={showEditingItem}
         setShowEditingItem={setShowEditingItem}
       />
     );

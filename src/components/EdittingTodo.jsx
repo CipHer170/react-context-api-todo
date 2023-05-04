@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./Edit.scss";
 import { useTodoContext } from "../hooks/useTodoContext";
 
-function EdittingTodo({ item, content, showEditingItem, setShowEditingItem }) {
+function EdittingTodo({ item, content, setShowEditingItem }) {
   const { edittingElementsById } = useTodoContext();
   const [newTitle, setNewTitle] = useState(item?.title || "");
 
@@ -15,7 +15,7 @@ function EdittingTodo({ item, content, showEditingItem, setShowEditingItem }) {
     e.preventDefault();
     edittingElementsById(item.id, newTitle);
     setNewTitle("");
-    setShowEditingItem(!showEditingItem);
+    setShowEditingItem(false);
   };
 
   return (
