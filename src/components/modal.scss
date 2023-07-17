@@ -1,9 +1,6 @@
 .modal {
-  width: 500px;
-  height: 500px;
+  inset: 30%;
   position: absolute;
-  top: 10%;
-  left: 32%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -16,7 +13,12 @@
   overflow-y: scroll;
   word-wrap: inherit;
   padding: 20px;
-
+  &__window {
+    position: absolute;
+    inset: 0;
+    opacity: 0.8;
+    background-color: gray;
+  }
   &__content {
     position: relative;
     left: 0;
